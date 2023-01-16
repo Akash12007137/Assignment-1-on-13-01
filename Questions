@@ -78,6 +78,7 @@ int main()
 Create a class to print the area of a square and a rectangle. The class has two functions with the same name but different number of parameters. 
 The function for printing the area of rectangle has two parameters which are its length and breadth respectively while the other function for printing the 
 area of square has one parameter which is the side of the square.
+
 #include <iostream>
 using namespace std;
 class Area 
@@ -100,3 +101,108 @@ int main()
     return 0;
 }
 
+
+-->PROGRAM 4
+A class has an integer data member 'i' and a function named 'printNum' to print the value of 'i'. Its subclass also has an integer data member 'j' and 
+a function named 'printNum' to print the value of 'j'. Make an object of the subclass and use it to assign a value to 'i' and to 'j'. Now call the function 
+'printNum' by this object.
+
+#include <iostream>
+using namespace std;
+class Parent 
+{
+    public:
+        int i;
+    public:
+        Parent() 
+		{
+            i = 0;
+        }
+        void printNum() 
+		{
+            cout << "Value of i: " << i << endl;
+        }
+};
+class Child : public Parent 
+{
+    public:
+        int j;
+    public:
+        Child() 
+		{
+            j = 0;
+        }
+        void printNum() 
+		{
+            cout << "Value of j: " << j << endl;
+        }
+};
+int main() 
+{
+    Child obj;
+    obj.i = 10;
+    obj.j = 20;
+    obj.printNum();
+    return 0;
+}
+
+
+-->PROGRAM  5
+Create a class 'Student' with three data members which are name, age and address. The constructor of the class assigns default values to name as "unknown", 
+age as '0' and address as "not available". It has two functions with the same name 'setInfo'. First function has two parameters for name and age and assigns 
+the same whereas the second function takes has three parameters which are assigned to name, age and address respectively. Print the name, age and address of 
+10 students.
+Hint - Use array of objects
+
+#include <iostream>
+using namespace std;
+class Student 
+{
+    private:
+        string name;
+        int age;
+        string address;
+    public:
+        Student() 
+		{
+            name = "unknown";
+            age = 0;
+            address = "not available";
+        }
+        void setInfo(string name, int age) 
+		{
+            this->name = name;
+            this->age = age;
+        }
+        void setInfo(string name, int age, string address) 
+		{
+            this->name = name;
+            this->age = age;
+            this->address = address;
+        }
+        void printInfo() 
+		{
+            cout << "Name: " << name << endl;
+            cout << "Age: " << age << endl;
+            cout << "Address: " << address << endl;
+        }
+};
+int main() 
+{
+    Student studentArray[10];
+    studentArray[0].setInfo("John", 25);
+    studentArray[1].setInfo("Jane", 22, "1234 Main St");
+    studentArray[2].setInfo("Bob", 30, "5678 Park Ave");
+    for (int i = 3; i < 10; i++) 
+	{
+        studentArray[i].setInfo("unknown", 0, "not available");
+    }
+    for (int i = 0; i < 10; i++) 
+	{
+        studentArray[i].printInfo();
+        cout << endl;
+    }
+    return 0;
+}
+
+----THE END----
